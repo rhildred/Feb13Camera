@@ -5,6 +5,19 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
 
+.controller("takePicture", function($scope, $http){
+  $scope.takePhoto = function(){
+    alert("Taking photo");
+    navigator.camera.getPicture(function(imageData){
+      alert(imageData);
+    }, 
+    function(message){
+      console.log(message);
+    }, 
+    { quality: 50 });
+  }
+})
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
